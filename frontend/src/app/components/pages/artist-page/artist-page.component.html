@@ -1,0 +1,22 @@
+<div class="container">
+    <div class="card card-sm">
+      <img [src]="artist.imageURL" [alt]="artist.name" class="card-img-top" />
+  
+      <div class="card-body">
+        <div class="card-header">
+          <h5 class="card-title">{{artist.name}}</h5>
+        </div>
+  
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"><strong>Genre:</strong> {{artist.genre}}</li>
+          <li class="list-group-item"><strong>Active Since:</strong> {{artist.activeSince | date}}</li>
+          <li class="list-group-item"><strong>Country:</strong> {{artist.country}}</li>
+          <li class="list-group-item"><strong>Albums:</strong> {{artist.albums.join(', ')}}</li>
+          <li class="list-group-item"><strong>Members:</strong> {{artist.members.join(', ')}}</li>
+        </ul>
+
+        <button (click)="searchArtistEvents(artist.id)">Find {{artist.name}} evets</button>
+      </div>
+    </div>
+  </div>
+  

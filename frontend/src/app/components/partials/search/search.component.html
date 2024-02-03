@@ -1,0 +1,12 @@
+<div class="container mt-3">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="input-group">
+                <input #s type="text" class="form-control" placeholder="Search Events!" (keyup.enter)="search(s.value)" [value]="searchTerm"/>
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="button" (click)="search(s.value)">Search</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

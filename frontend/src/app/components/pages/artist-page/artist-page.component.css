@@ -1,0 +1,20 @@
+/* artist-page.component.css */
+
+.container {
+    margin-top: 20px; /* Adjust the top margin as needed */
+  }
+  
+  .card {
+    max-width: 400px; /* Set the maximum width of the card */
+    margin: 0 auto; /* Center the card horizontally */
+  }
+  
+  .card-img-top {
+    max-height: 200px; /* Set the maximum height of the image */
+    object-fit: cover; /* Maintain aspect ratio and cover the entire space */
+  }
+  
+  .list-group-item {
+    padding: 8px; /* Adjust the padding for list items */
+  }
+  
