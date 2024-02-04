@@ -1,42 +1,35 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { EventService } from '../../../services/event.service';
 import { VenueService } from '../../../services/venue.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { Event } from '../../../shared/models/Event';
-import { CartService } from '../../../services/cart.service';
-import { CartItem } from '../../../shared/models/CartItem';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css'] 
+  styleUrls: ['./home.component.css']
 })
-export class HomeComponent {
-  event!: Event;
+export class HomeComponent implements OnInit {
   events: Event[] = [];
 
   constructor(
     private eventService: EventService,
-    private venueService: VenueService, 
-    private cartService:CartService,
-    activatedRoute: ActivatedRoute,
-    private router:Router
-  ) {
-    let eventsObservbable: Observable<Event[]>
-    activatedRoute.params.subscribe((params) => {
-      if (params.searchTerm) {
-        eventsObservbable = this.eventService.getAllEventBySearchTerm(params.searchTerm);
+    private venueService: VenueService,
+    private activatedRoute: ActivatedRoute,
+  ) {}
 
-        if (this.events.length === 0) {
-          eventsObservbable = this.eventService.getAll();
-        }
+  ngOnInit(): void {
+    this.activatedRoute.params.subscribe((params) => {
+      if (params.searchTerm) {
+        this.eventService.getAllEventBySearchTerm(params.searchTerm)
+          .subscribe((serverEvents) => {
+            this.events = serverEvents;
+          });
       } else {
-        eventsObservbable = this.eventService.getAll();
-        console.log(eventsObservbable);
-        eventsObservbable.subscribe((serverEvents)=>{
-          this.events = serverEvents;
-        })
+        this.eventService.getAll()
+          .subscribe((serverEvents) => {
+            this.events = serverEvents;
+          });
       }
     });
   }
@@ -45,5 +38,4 @@ export class HomeComponent {
     const venue = this.venueService.getVenueById(venueId);
     return venue ? venue.name : 'Unknown Venue';
   }
-
 }

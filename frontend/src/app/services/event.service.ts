@@ -17,7 +17,6 @@ export class EventService {
 
   getAllEventBySearchTerm(searchTerm: string): Observable<Event[]> {
     return this.http.get<Event[]>(EVENTS_SEARCHTERM_URL + searchTerm);
-    console.log('qwe',EVENTS_SEARCHTERM_URL+searchTerm);
   }
 
   getEventById(eventId: string): Observable<Event> {

@@ -22,11 +22,11 @@ router.get("", (req,res) => {
 })
 
 router.get("/search/:searchTerm", (req, res) => {
-    const searchTerm = req.params.searchTerm;
+    const searchTerm = req.params.searchTerm.trim().toLocaleLowerCase();
+    console.log('Search Term:', searchTerm);
 
-    const events = sample_events
-    .filter(event => event.title.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase()));
+    const events = sample_events.filter(event => event.title.trim().toLocaleLowerCase().includes(searchTerm));
     res.send(events);
-})
+});
 
 export default router;

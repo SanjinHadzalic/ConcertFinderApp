@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
-  styleUrls: ['./search.component.css'] // Correct the typo: styleUrls instead of styleUrl
+  styleUrls: ['./search.component.css']
 })
 export class SearchComponent {
   searchTerm = '';
@@ -19,10 +19,9 @@ export class SearchComponent {
 
   search(term: string): void {
     if (term) {
-      console.log(term)
-      this.router.navigateByUrl('/search/' + term);
-    }
-    if(!term) {
+      console.log('nista se nije dogodilo')
+      this.router.navigate(['/search/', term]);
+    } else {
       this.router.navigateByUrl('');
     }
   }
