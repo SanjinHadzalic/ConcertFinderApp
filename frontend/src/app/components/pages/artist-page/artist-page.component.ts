@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Artist } from '../../../shared/models/Artist';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ArtistService } from '../../../services/artist.service';
+import { AlbumService } from '../../../services/album.service';
+import { Album } from '../../../shared/models/Album';
 
 @Component({
   selector: 'app-artist-page',
@@ -10,10 +12,13 @@ import { ArtistService } from '../../../services/artist.service';
 })
 export class ArtistPageComponent implements OnInit{
   artist!: Artist;
-  constructor(activatedRoute: ActivatedRoute, artistService:ArtistService, private router: Router) {
+  artistAlbums: Album[] = [];
+
+  constructor(activatedRoute: ActivatedRoute, artistService:ArtistService, private router: Router, albumService:AlbumService) {
     activatedRoute.params.subscribe((params)=>{
       if(params.id)
       this.artist = artistService.getArtistById(params.id);
+      this.artistAlbums = albumService.getAlbumsByArtistId(params.id);
     })
   }
   ngOnInit(): void {
@@ -27,7 +32,6 @@ export class ArtistPageComponent implements OnInit{
       const searchUrl = `/search/${this.artist.name.toLowerCase()}`;
       this.router.navigate([searchUrl]);
     } else {
-      // Handle the case where artist data is not available
       console.error('Artist data is not available.');
     }  }
 }

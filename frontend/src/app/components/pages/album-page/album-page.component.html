@@ -1,0 +1,24 @@
+<div class="container">
+    <div class="card">
+        <img [src]="album.imageURL" [alt]="album.name" class="card-img-top" />
+
+        <div class="card-body">
+            <div class="card-header">
+                <h5 class="card-title">{{album.name}}</h5>
+            </div>
+
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item"><strong>Genre:</strong> {{album.genre}}</li>
+                <li class="list-group-item"><strong>Duration:</strong> {{album.duration | number:'1.2-2'}} min</li>
+                <li class="list-group-item"><strong>Producer:</strong> {{album.producer}}</li>
+                <li class="list-group-item"><strong>Author:</strong> {{getArtistName()}}</li>
+                <li class="list-group-item">
+                    <strong>Songs:</strong>
+                    <ul>
+                        <li *ngFor="let song of album.songs">{{ song }}</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

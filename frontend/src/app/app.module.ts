@@ -7,6 +7,9 @@ import { HeaderComponent } from './components/partials/header/header.component';
 import { HomeComponent } from './components/pages/home/home.component';
 import { SearchComponent } from './components/partials/search/search.component';
 import { ArtistPageComponent } from './components/pages/artist-page/artist-page.component';
+import { AlbumPageComponent } from './components/pages/album-page/album-page.component';
+import { CartPageComponent } from './components/pages/cart-page/cart-page.component';
+import { TitleComponent } from './components/partials/title/title.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +17,10 @@ import { ArtistPageComponent } from './components/pages/artist-page/artist-page.
     HeaderComponent,
     HomeComponent,
     SearchComponent,
-    ArtistPageComponent
+    ArtistPageComponent,
+    AlbumPageComponent,
+    CartPageComponent,
+    TitleComponent
   ],
   imports: [
     BrowserModule,

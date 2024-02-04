@@ -1,0 +1,14 @@
+<!-- cart-page.component.html -->
+<app-title title="Cart Page" margin="1.5rem 0 0 2.5rem"></app-title>
+
+<div class="container">
+    <ul>
+        <li *ngFor="let cart of cartItems">
+            <div>
+                <p>{{ cart.event.artist }}</p>
+                <!-- Add button to trigger deleteFromCart method -->
+                <button (click)="deleteFromCart(cart.event)">Remove Event</button>
+            </div>
+        </li>
+    </ul>
+</div>

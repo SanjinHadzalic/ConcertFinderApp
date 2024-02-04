@@ -5,19 +5,21 @@
         <div *ngFor="let event of events" class="col-md-4">
             <div class="card mb-3">
                 <a routerLink="/event/{{event.id}}">
-                    <h5 class="card-title">{{event.title}}</h5>
                 </a>
+                <h5 class="card-title">{{event.title}}</h5>
                 <img [src]="event.imageURL" [alt]="event.title" class="card-img-top" />
                 <div class="card-body">
                     <a routerLink="/artist/{{event.artist.id}}">
                         <p class="card-text"><strong>{{event.artist.name}}</strong></p>
                     </a>
-                    <p class="card-text"><strong>Place:</strong> {{event.venue}}</p>
-                    <p class="card-text"><strong>Time:</strong> {{event.dateTime | date: 'yyyy-MM-dd HH:mm'}}</p>
+                    <p class="card-text">
+                        <strong>Venue:</strong>
+                        <a routerLink="/venue/{{ event.venueId }}">{{ getVenueName(event.venueId) }}</a>
+                      </p>
+                                          <p class="card-text"><strong>Time:</strong> {{event.dateTime | date: 'yyyy-MM-dd HH:mm'}}</p>
                     <p class="card-text"><strong>Tickets remaining:</strong> {{event.capacity }}</p>
-                    <p class="card-text">GET TICKET</p>
+                    <p class="card-text"><strong>Price: {{event.price}} EUR</strong></p>
                 </div>
-
             </div>
         </div>
     </div>

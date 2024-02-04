@@ -1,0 +1,11 @@
+/* album-page.component.css */
+
+.container {
+    margin-top: 20px; /* Add some top margin to the container */
+  }
+  
+  .card {
+    max-width: 400px; /* Set a maximum width for the card */
+    margin: auto; /* Center the card within the container */
+  }
+  

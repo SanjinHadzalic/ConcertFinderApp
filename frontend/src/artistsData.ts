@@ -1,4 +1,6 @@
 import { Artist } from "./app/shared/models/Artist";
+import { sample_albums } from "./albumsData";
+import { Album } from "./app/shared/models/Album";
 
 export const sample_artists: Artist[] = [
     {
@@ -6,7 +8,7 @@ export const sample_artists: Artist[] = [
         name: 'U2',
         genre: 'rock',
         members: ['Bono', 'Adam Clayton', 'The Edge', 'Larry Mullen Jr.'],
-        albums: ['Boy', 'October', 'War'],
+        albums: [sample_albums[0], sample_albums[1], sample_albums[2]],
         country: 'Ireland',
         activeSince: new Date('1976-01-01'),
         imageURL: 'assets/artist_1.jpg'
@@ -16,7 +18,7 @@ export const sample_artists: Artist[] = [
         name: 'Laibach',
         genre: 'industrial',
         members: ['Milan Fras', 'Ivan Novak', 'Marina Mårtensson', 'Vitja Balžalorsky', 'Bojan Krhlanko', 'Luka Jamnik', 'Rok Lopatič'],
-        albums: ['Laibach', 'Nova Akropola', 'Opus Dei', 'Let It Be', 'Sympathy for the Devil', 'Kapital'],
+        albums: [sample_albums[3], sample_albums[4], sample_albums[5]],
         country: 'Slovenia',
         activeSince: new Date('1980-01-01'),
         imageURL: 'assets/artist_2.jpg'
@@ -26,12 +28,9 @@ export const sample_artists: Artist[] = [
         name: 'Rammstein',
         genre: 'Neue Deutsche Härte',
         members: ['Till Lindemann', 'Paul Landers', 'Christoph Schneider', 'Christian Lorenz', 'Richard Kruspe', 'Oliver Riedel'],
-        albums: ['Herzeleid', 'Sehnsucht', 'Mutter', 'Reise, Reise', 'Rosenrot'],
+        albums: [sample_albums[6], sample_albums[7], sample_albums[8]],
         country: 'Germany',
         activeSince: new Date('1994-01-01'),
         imageURL: 'assets/artist_3.jpg'
-    },
-
-
-
+    }
 ];

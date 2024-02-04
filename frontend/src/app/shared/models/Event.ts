@@ -5,7 +5,8 @@ export class Event{
     title!: string;
     imageURL!: string;
     artist!: Artist;
-    venue!: string; //TODO napraviti klasu Venue.ts
-    dateTime!: Date; // date and time
-    capacity!: string;
+    venueId!: string; 
+    dateTime!: Date; 
+    capacity!: number;
+    price!: number;
 }
