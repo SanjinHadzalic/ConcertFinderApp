@@ -1,23 +1,26 @@
 import { Injectable } from '@angular/core';
 import { Event } from '../shared/models/Event';
-import { sample_events } from '../../eventsData';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { EVENTS_SEARCHTERM_URL, EVENTS_URL } from '../shared/constants/urls';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EventService {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
-  getAll(): Event[] {
-    return sample_events;
+  getAll(): Observable<Event[]> {
+    return this.http.get<Event[]>(EVENTS_URL);
   }
 
-  getAllEventBySearchTerm(searchTerm:string) {
-    return this.getAll().filter(event => event.title.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase()))
+  getAllEventBySearchTerm(searchTerm: string): Observable<Event[]> {
+    return this.http.get<Event[]>(EVENTS_SEARCHTERM_URL + searchTerm);
+    console.log('qwe',EVENTS_SEARCHTERM_URL+searchTerm);
   }
 
-  getEventById(eventId:string):Event{
-    return this.getAll().find(event => event.id == eventId) ?? new Event();
+  getEventById(eventId: string): Observable<Event> {
+    return this.http.get<Event>(`${EVENTS_URL}/${eventId}`);
   }
 }

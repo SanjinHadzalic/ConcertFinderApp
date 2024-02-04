@@ -5,6 +5,7 @@ import { ArtistPageComponent } from './components/pages/artist-page/artist-page.
 import { AlbumPageComponent } from './components/pages/album-page/album-page.component';
 import { VenuePageComponent } from './components/pages/venue-page/venue-page.component';
 import { CartPageComponent } from './components/pages/cart-page/cart-page.component';
+import { LoginPageComponent } from './components/pages/login-page/login-page.component';
 
 const routes: Routes = [
   {path:'', component:HomeComponent},
@@ -12,7 +13,8 @@ const routes: Routes = [
   {path: 'artist/:id', component:ArtistPageComponent},
   {path: 'album/:id', component:AlbumPageComponent},
   {path: 'venue/:id', component:VenuePageComponent},
-  {path:'cart-page',component:CartPageComponent}
+  {path:'cart-page',component:CartPageComponent},
+  {path:'login',component:LoginPageComponent}
 
 ];
 

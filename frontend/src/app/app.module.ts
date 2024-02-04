@@ -10,6 +10,11 @@ import { ArtistPageComponent } from './components/pages/artist-page/artist-page.
 import { AlbumPageComponent } from './components/pages/album-page/album-page.component';
 import { CartPageComponent } from './components/pages/cart-page/cart-page.component';
 import { TitleComponent } from './components/partials/title/title.component';
+import { HttpClientModule } from '@angular/common/http';
+import { LoginPageComponent } from './components/pages/login-page/login-page.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -20,11 +25,20 @@ import { TitleComponent } from './components/partials/title/title.component';
     ArtistPageComponent,
     AlbumPageComponent,
     CartPageComponent,
-    TitleComponent
+    TitleComponent,
+    LoginPageComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    BrowserAnimationsModule,
+    AppRoutingModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    ToastrModule.forRoot({
+      timeOut:3000,
+      positionClass:'toast-bottom-right',
+      newestOnTop:false
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

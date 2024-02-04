@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Event } from '../../../shared/models/Event';
 import { CartService } from '../../../services/cart.service';
 import { CartItem } from '../../../shared/models/CartItem';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -12,7 +13,7 @@ import { CartItem } from '../../../shared/models/CartItem';
   styleUrls: ['./home.component.css'] 
 })
 export class HomeComponent {
-  event!:Event;
+  event!: Event;
   events: Event[] = [];
 
   constructor(
@@ -22,15 +23,20 @@ export class HomeComponent {
     activatedRoute: ActivatedRoute,
     private router:Router
   ) {
+    let eventsObservbable: Observable<Event[]>
     activatedRoute.params.subscribe((params) => {
       if (params.searchTerm) {
-        this.events = this.eventService.getAllEventBySearchTerm(params.searchTerm);
+        eventsObservbable = this.eventService.getAllEventBySearchTerm(params.searchTerm);
 
         if (this.events.length === 0) {
-          this.events = this.eventService.getAll();
+          eventsObservbable = this.eventService.getAll();
         }
       } else {
-        this.events = this.eventService.getAll();
+        eventsObservbable = this.eventService.getAll();
+
+        eventsObservbable.subscribe((serverEvents)=>{
+          this.events = serverEvents;
+        })
       }
     });
   }

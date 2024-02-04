@@ -6,15 +6,18 @@
                 <!-- <li>
                     <a routerLink="#" class="logo">Concert Finder</a>
                 </li> -->
-                <li class="menu-container">
-                    <a routerLink="/dashboard" class="logo">User</a>
+                <li *ngIf="isAuth" class="menu-container">
+                    <a routerLink="/dashboard" class="logo">{{user.name}}</a>
                     <!-- <div class="menu">
                         <a routerLink="/profile" class="logo">Profile</a>
                         <a routerLink="/orders" class="logo">Orders</a>
                         <a>Logout</a>
                     </div> -->
                 </li><li>
-                    <a routerLink="/" class="logout">Logout</a>
+                    <a (click)="logout()" class="logout">Logout</a>
+                </li>
+                <li *ngIf="!isAuth">
+                    <a routerLink="/login" class="login">Login</a>
                 </li>
                 <!-- <li>
                     <a routerLink="/cart-page">Cart</a>
