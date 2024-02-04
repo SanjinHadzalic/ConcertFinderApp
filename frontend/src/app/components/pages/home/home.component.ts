@@ -33,7 +33,7 @@ export class HomeComponent {
         }
       } else {
         eventsObservbable = this.eventService.getAll();
-
+        console.log(eventsObservbable);
         eventsObservbable.subscribe((serverEvents)=>{
           this.events = serverEvents;
         })

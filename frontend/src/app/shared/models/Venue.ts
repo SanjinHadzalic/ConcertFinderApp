@@ -5,4 +5,6 @@ export class Venue{
     imageURL!: string;
     address!: string;
     description!: string; 
+    latitude!: number;
+    longitude!: number;
 }

@@ -1,0 +1,9 @@
+.error-list {
+    color: red;
+    margin-top: 5px; /* Add some spacing between input and error message */
+}
+
+/* Optional: Style for input fields with errors */
+.input-container.error {
+    border: 1px solid red;
+}

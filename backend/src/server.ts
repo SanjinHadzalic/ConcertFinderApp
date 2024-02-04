@@ -24,7 +24,7 @@ app.use(cors({
 }));
 
 app.use('/', eventRouter);
-app.use('/login', loginRouter);
+app.use('/', loginRouter);
 app.use('/album', albumRouter);
 app.use('/artist', artistRouter);
 app.use('/venue', venueRouter);

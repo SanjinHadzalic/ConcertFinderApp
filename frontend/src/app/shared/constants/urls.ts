@@ -5,3 +5,4 @@ export const EVENTS_SEARCHTERM_URL = EVENTS_URL + '/search/'
 export const ALBUM_ID_URL = BASE_URL + '/api/album/';
 
 export const USER_LOGIN_URL = BASE_URL + '/login';
+export const USER_REGISTER_URL = BASE_URL + '/register';

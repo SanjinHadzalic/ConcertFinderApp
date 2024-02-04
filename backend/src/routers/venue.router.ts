@@ -18,12 +18,21 @@ router.get("/seed", asynceHandler(
       }
   ))
   
+router.get('/', asynceHandler(
+    async (req, res) => {
+        const venues = await VenueModel.find();
+        res.send(venues);
+    }
+))
 
-router.get("/:id", (req, res) => {
-    const id = req.params.id;
-
-    const venues = sample_venues.find(venue => venue.id == id) ?? new Venue();
-    res.send(venues);
-});
+router.get("/:id", asynceHandler(
+    async (req, res) => {
+        const id = req.params.id;
+        const venues = await VenueModel.find();
+    
+        const venuesNew =venues.find(venue => venue.id == id) ?? new Venue();
+        res.send(venuesNew);
+    })
+)
 
 export default router;

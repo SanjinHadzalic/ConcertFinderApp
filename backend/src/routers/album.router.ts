@@ -19,12 +19,22 @@ router.get("/seed", asynceHandler(
       }
   ))
   
+router.get('/', asynceHandler(
+    async(req, res) => {
+        const albums = await AlbumModel.find();
+        res.send(albums);
+    }
+))
 
-router.get("/:id", (req, res) => {
-    const id = req.params.id;
 
-    const albums = sample_albums.find(album => album.id == id) ?? new Album();
-    res.send(albums);
-});
+
+router.get("/:id", asynceHandler(
+   async (req, res) => {
+        const id = req.params.id;
+        const albums = await AlbumModel.find();
+        const albumsNew = albums.find(album => album.id == id) ?? new Album();
+        res.send(albumsNew);
+    })
+)
 
 export default router;

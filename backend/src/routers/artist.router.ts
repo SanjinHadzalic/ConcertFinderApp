@@ -20,11 +20,13 @@ router.get("/seed", asynceHandler(
   ))
   
 
-router.get("/:id", (req, res) => {
-    const id = req.params.id;
-
-    const artists = sample_artists.find(artist => artist.id == id) ?? new Artist();
-    res.send(artists);
-});
+router.get("/:id", asynceHandler(
+    async (req, res) => {
+        const id = req.params.id;
+        const artists = await ArtistModel.find();
+        const artistsNew = artists.find(artist => artist.id == id) ?? new Artist();
+        res.send(artistsNew);
+    })
+)
 
 export default router;
